@@ -1,6 +1,6 @@
-// Novaspire service worker: hashed assets are cache-first (immutable),
+// Portholm service worker: hashed assets are cache-first (immutable),
 // everything else network-first with cache fallback for offline play.
-const CACHE = 'novaspire-v1'
+const CACHE = 'portholm-v1'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
