@@ -1,62 +1,76 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#070B18">
-  <title>Portholm — one tower, endless waves</title>
-  <meta name="description" content="Minimalist neon idle tower defense with card drafts, prestige and a worldwide Daily Anomaly. Free in your browser.">
+  <meta name="theme-color" content="#e8dcc3">
+  <title>PORTHOLM — zbuduj wyspę, nakarm miasto</title>
+  <meta name="description" content="Wyspiarski city-builder w przeglądarce. Drewno, zboże, chleb i piwo — łańcuchy produkcji, drogi do magazynu i miasto, które rośnie na Twoich oczach. Za darmo, bez instalacji.">
+  <meta property="og:title" content="PORTHOLM — zbuduj wyspę, nakarm miasto">
+  <meta property="og:description" content="Wyspiarski city-builder w przeglądarce. Za darmo, bez instalacji.">
+  <meta property="og:image" content="./shots/wyspa.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-DVT94zDd.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DYsZyTQT.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-BoOdMD6n.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-RViigh5U.css">
 </head>
 <body>
   <main class="wrap">
     <header class="hero">
-      <!-- PLAY href: po wdrożeniu na własną domenę build gry serwujemy pod /play/ -->
-      <svg class="tower" viewBox="0 0 320 340" aria-hidden="true">
-        <circle class="draw ring" cx="160" cy="180" r="132"/>
-        <polygon class="draw hull" points="160,96 236,140 236,224 160,268 84,224 84,140"/>
-        <line class="draw barrel" x1="160" y1="92" x2="160" y2="22"/>
-        <circle class="draw core" cx="160" cy="182" r="34"/>
-        <polygon class="draw foe foe-a" points="34,60 52,88 16,88"/>
-        <polygon class="draw foe foe-b" points="284,262 302,290 266,290"/>
-      </svg>
-      <h1 class="wordmark" aria-label="PORTHOLM"><span>N</span><span>O</span><span>V</span><span>A</span><span>S</span><span>P</span><span>I</span><span>R</span><span>E</span></h1>
-      <p class="tagline">One tower. Endless waves.<br><em>Numbers that spiral out of control.</em></p>
+      <h1 class="wordmark">PORTHOLM</h1>
+      <p class="tagline">Zbuduj wyspę. Nakarm miasto.</p>
+      <p class="lede">Drwal ścina las, tartak tnie deski, młyn miele zboże na mąkę — a browar walczy z młynem o to samo ziarno. Ty decydujesz, co powstanie pierwsze.</p>
       <div class="cta-row">
-        <a class="cta cta-primary" href="./play/">▶ PLAY IN BROWSER</a>
-        <a class="cta cta-ghost" href="#features">What is this?</a>
+        <a class="cta cta-primary" href="./play/">Graj w przeglądarce</a>
+        <a class="cta cta-ghost" href="#jak-to-dziala">Jak to działa?</a>
       </div>
-      <p class="sub">Free · no install · phone &amp; desktop</p>
+      <p class="sub">Za darmo · bez instalacji · telefon i komputer</p>
+      <figure class="shot reveal">
+        <img src="./shots/wyspa.png" alt="Wyspa z miastem: pola zboża, młyn, magazyn z flagą i rzędy kamienic nad morzem" width="840" height="1680" loading="eager">
+      </figure>
     </header>
 
-    <section id="features" class="features">
+    <section id="jak-to-dziala" class="features">
       <article class="card reveal">
-        <h2>🃏 Draft your build</h2>
-        <p>After every wave, pick 1 of 3 cards — fork your shots, freeze time, or trade your walls for triple damage. No two runs play the same.</p>
+        <h2>🌲 Łańcuchy produkcji</h2>
+        <p>Drewno na deski, zboże na mąkę, mąka na chleb. Każdy budynek żywi się tym, co wytworzy sąsiad — a jeden zły wybór zatrzymuje całą ulicę.</p>
       </article>
       <article class="card reveal">
-        <h2>⬡ Death is progress</h2>
-        <p>When the tower falls, waves become prestige cores. Forge permanent power, research breakthroughs on real-time timers, come back stronger.</p>
+        <h2>🛣 Drogi mają znaczenie</h2>
+        <p>Bez drogi do magazynu warsztat stoi bezczynnie. Rysujesz je palcem po wyspie i patrzysz, jak tragarze ruszają z towarem.</p>
       </article>
       <article class="card reveal">
-        <h2>☄ Daily Anomaly</h2>
-        <p>One seeded challenge per day — identical for every player on Earth. Keep the streak, climb the weekly tournament, share your run card.</p>
+        <h2>🎩 Osadnicy i mieszczanie</h2>
+        <p>Osadnikom wystarczą ryby. Awansuj dom, a mieszkańcy zapłacą wyższy podatek — ale zażądają chleba i piwa. Awans to Twoja decyzja, nie automat.</p>
       </article>
+    </section>
+
+    <section class="gallery">
+      <figure class="reveal">
+        <img src="./shots/miasto.png" alt="Zbliżenie na ulicę: kamienice z lukarnami, tartak, studnia i drzewa między domami" width="840" height="1680" loading="lazy">
+        <figcaption>Miasto rośnie w górę — każdy dom ma inną bryłę i dach.</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="./shots/noc.png" alt="To samo miasto nocą: ciepłe światło w oknach i latarnie przy drogach" width="840" height="1680" loading="lazy">
+        <figcaption>Włącz cykl dnia, a wieczorem zapalą się okna.</figcaption>
+      </figure>
     </section>
 
     <section class="stats reveal">
-      <div class="stat"><span class="num" data-count="30" data-suffix="s">0</span><span class="lab">to learn the loop</span></div>
-      <div class="stat"><span class="num infinity">∞</span><span class="lab">waves to survive</span></div>
-      <div class="stat"><span class="num" data-count="0">0</span><span class="lab">loot boxes, ever</span></div>
+      <div class="stat"><span class="num" data-count="7">0</span><span class="lab">dóbr w łańcuchu</span></div>
+      <div class="stat"><span class="num" data-count="10">0</span><span class="lab">rodzajów budynków</span></div>
+      <div class="stat"><span class="num" data-count="0">0</span><span class="lab">skrzynek z losowaniem</span></div>
+    </section>
+
+    <section class="promise reveal">
+      <p>Wyspa pracuje także wtedy, gdy Cię nie ma — po powrocie odbierasz zarobek. Bez rejestracji, bez śledzenia, bez skrzynek z losowaniem. Gra jest po polsku.</p>
+      <a class="cta cta-primary" href="./play/">Zacznij od chaty drwala</a>
     </section>
 
     <footer>
-      <span><b>PORTHOLM</b> · a neon idle tower defense</span>
-      <span>No sign-up. No spyware. Everything purchasable is earnable.</span>
+      <span><b>PORTHOLM</b> · wyspiarski city-builder</span>
+      <span>Gra w wersji rozwojowej — zapisuje stan w Twojej przeglądarce.</span>
     </footer>
   </main>
 </body>
