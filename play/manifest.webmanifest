@@ -1,12 +1,14 @@
 {
-  "name": "Portholm",
+  "name": "Portholm — island city-builder",
   "short_name": "Portholm",
-  "description": "One tower. Endless waves. Numbers out of control.",
+  "description": "Build an island town: chain wood, grain, bread and beer, connect it all with roads, and watch the town grow.",
+  "lang": "en",
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#070B18",
-  "theme_color": "#070B18",
+  "background_color": "#e6dcc3",
+  "theme_color": "#e8dcc3",
+  "categories": ["games", "simulation"],
   "icons": [
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },

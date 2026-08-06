@@ -1,76 +1,182 @@
 <!doctype html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#e8dcc3">
-  <title>PORTHOLM — zbuduj wyspę, nakarm miasto</title>
-  <meta name="description" content="Wyspiarski city-builder w przeglądarce. Drewno, zboże, chleb i piwo — łańcuchy produkcji, drogi do magazynu i miasto, które rośnie na Twoich oczach. Za darmo, bez instalacji.">
-  <meta property="og:title" content="PORTHOLM — zbuduj wyspę, nakarm miasto">
-  <meta property="og:description" content="Wyspiarski city-builder w przeglądarce. Za darmo, bez instalacji.">
+  <title>PORTHOLM — build the island, feed the town</title>
+  <meta name="description" content="An island city-builder in your browser. Wood, grain, bread and beer — production chains, roads to the warehouse, and a town that grows while you watch. Free, no install.">
+  <meta property="og:title" content="PORTHOLM — build the island, feed the town">
+  <meta property="og:description" content="An island city-builder in your browser. Free, no install.">
   <meta property="og:image" content="./shots/wyspa.png">
+  <script>
+    // Pick the language before first paint: CSS hides the other one, so the
+    // page never flashes the wrong text. Same storage key as the game.
+    (function () {
+      var lang
+      try { lang = localStorage.getItem('portholm:lang') } catch (e) { /* private mode */ }
+      if (lang !== 'pl' && lang !== 'en') {
+        lang = (navigator.language || '').toLowerCase().startsWith('pl') ? 'pl' : 'en'
+      }
+      document.documentElement.lang = lang
+      if (lang === 'pl') {
+        document.title = 'PORTHOLM — zbuduj wyspę, nakarm miasto'
+        var d = document.querySelector('meta[name="description"]')
+        if (d) d.setAttribute('content', 'Wyspiarski city-builder w przeglądarce. Drewno, zboże, chleb i piwo — łańcuchy produkcji, drogi do magazynu i miasto, które rośnie na Twoich oczach. Za darmo, bez instalacji.')
+      }
+    })()
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-BoOdMD6n.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-RViigh5U.css">
+  <!-- sections fade in on scroll; without JS they must simply be there -->
+  <noscript><style>.reveal { opacity: 1 !important; }</style></noscript>
+  <script type="module" crossorigin src="/assets/index-Bwj3ud4T.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DcRtmctX.css">
 </head>
 <body>
   <main class="wrap">
+    <nav class="lang" aria-label="Language / Język">
+      <button type="button" class="lang-btn" data-set-lang="pl" aria-pressed="false" lang="pl">PL</button>
+      <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="false" lang="en">EN</button>
+    </nav>
+
     <header class="hero">
       <h1 class="wordmark">PORTHOLM</h1>
-      <p class="tagline">Zbuduj wyspę. Nakarm miasto.</p>
-      <p class="lede">Drwal ścina las, tartak tnie deski, młyn miele zboże na mąkę — a browar walczy z młynem o to samo ziarno. Ty decydujesz, co powstanie pierwsze.</p>
+      <p class="tagline">
+        <span data-lang="pl">Zbuduj wyspę. Nakarm miasto.</span>
+        <span data-lang="en">Build the island. Feed the town.</span>
+      </p>
+      <p class="lede">
+        <span data-lang="pl">Drwal ścina las, tartak tnie deski, młyn miele zboże na mąkę — a browar walczy z młynem o to samo ziarno. Ty decydujesz, co powstanie pierwsze.</span>
+        <span data-lang="en">Your woodcutter clears the forest, the sawmill turns logs into planks, the mill grinds grain into flour — and the brewery wants that same grain. You decide what gets built first.</span>
+      </p>
       <div class="cta-row">
-        <a class="cta cta-primary" href="./play/">Graj w przeglądarce</a>
-        <a class="cta cta-ghost" href="#jak-to-dziala">Jak to działa?</a>
+        <a class="cta cta-primary" href="./play/">
+          <span data-lang="pl">Graj w przeglądarce</span>
+          <span data-lang="en">Play in your browser</span>
+        </a>
+        <a class="cta cta-ghost" href="#how">
+          <span data-lang="pl">Jak to działa?</span>
+          <span data-lang="en">How it works</span>
+        </a>
       </div>
-      <p class="sub">Za darmo · bez instalacji · telefon i komputer</p>
+      <p class="sub">
+        <span data-lang="pl">Za darmo · bez instalacji · telefon i komputer</span>
+        <span data-lang="en">Free · no install · phone &amp; desktop</span>
+      </p>
       <figure class="shot reveal">
-        <img src="./shots/wyspa.png" alt="Wyspa z miastem: pola zboża, młyn, magazyn z flagą i rzędy kamienic nad morzem" width="840" height="1680" loading="eager">
+        <img src="./shots/wyspa.png"
+             data-alt-pl="Wyspa z miastem: pola zboża, młyn, magazyn z flagą i rzędy kamienic nad morzem"
+             data-alt-en="An island town: grain fields, a windmill, the flagged warehouse and rows of townhouses above the sea"
+             alt="An island town: grain fields, a windmill, the flagged warehouse and rows of townhouses above the sea"
+             width="840" height="1680" loading="eager">
       </figure>
     </header>
 
-    <section id="jak-to-dziala" class="features">
+    <section id="how" class="features">
       <article class="card reveal">
-        <h2>🌲 Łańcuchy produkcji</h2>
-        <p>Drewno na deski, zboże na mąkę, mąka na chleb. Każdy budynek żywi się tym, co wytworzy sąsiad — a jeden zły wybór zatrzymuje całą ulicę.</p>
+        <h2>
+          <span data-lang="pl">🌲 Łańcuchy produkcji</span>
+          <span data-lang="en">🌲 Production chains</span>
+        </h2>
+        <p>
+          <span data-lang="pl">Drewno na deski, zboże na mąkę, mąka na chleb. Każdy budynek żywi się tym, co wytworzy sąsiad — a jeden zły wybór zatrzymuje całą ulicę.</span>
+          <span data-lang="en">Wood into planks, grain into flour, flour into bread. Every workshop eats what its neighbour makes — and one bad call stalls the whole street.</span>
+        </p>
       </article>
       <article class="card reveal">
-        <h2>🛣 Drogi mają znaczenie</h2>
-        <p>Bez drogi do magazynu warsztat stoi bezczynnie. Rysujesz je palcem po wyspie i patrzysz, jak tragarze ruszają z towarem.</p>
+        <h2>
+          <span data-lang="pl">🛣 Drogi mają znaczenie</span>
+          <span data-lang="en">🛣 Roads decide everything</span>
+        </h2>
+        <p>
+          <span data-lang="pl">Bez drogi do magazynu warsztat stoi bezczynnie. Rysujesz je palcem po wyspie i patrzysz, jak tragarze ruszają z towarem.</span>
+          <span data-lang="en">No road to the warehouse, no work — the workshop just sits there. Draw them with your finger and watch the carriers set off with the goods.</span>
+        </p>
       </article>
       <article class="card reveal">
-        <h2>🎩 Osadnicy i mieszczanie</h2>
-        <p>Osadnikom wystarczą ryby. Awansuj dom, a mieszkańcy zapłacą wyższy podatek — ale zażądają chleba i piwa. Awans to Twoja decyzja, nie automat.</p>
+        <h2>
+          <span data-lang="pl">🎩 Osadnicy i mieszczanie</span>
+          <span data-lang="en">🎩 Settlers and citizens</span>
+        </h2>
+        <p>
+          <span data-lang="pl">Osadnikom wystarczą ryby. Awansuj dom, a mieszkańcy zapłacą wyższy podatek — ale zażądają chleba i piwa. Awans to Twoja decyzja, nie automat.</span>
+          <span data-lang="en">Settlers get by on fish. Promote a house and it pays more tax — but now it wants bread and beer. Promotion is your call, never automatic.</span>
+        </p>
       </article>
     </section>
 
     <section class="gallery">
       <figure class="reveal">
-        <img src="./shots/miasto.png" alt="Zbliżenie na ulicę: kamienice z lukarnami, tartak, studnia i drzewa między domami" width="840" height="1680" loading="lazy">
-        <figcaption>Miasto rośnie w górę — każdy dom ma inną bryłę i dach.</figcaption>
+        <img src="./shots/miasto.png"
+             data-alt-pl="Zbliżenie na ulicę: kamienice z lukarnami, tartak, studnia i drzewa między domami"
+             data-alt-en="A street close-up: townhouses with dormers, a sawmill, a well and trees between the houses"
+             alt="A street close-up: townhouses with dormers, a sawmill, a well and trees between the houses"
+             width="840" height="1680" loading="lazy">
+        <figcaption>
+          <span data-lang="pl">Miasto rośnie w górę — każdy dom ma inną bryłę i dach.</span>
+          <span data-lang="en">The town grows upward — every house gets its own massing and roof.</span>
+        </figcaption>
       </figure>
       <figure class="reveal">
-        <img src="./shots/noc.png" alt="To samo miasto nocą: ciepłe światło w oknach i latarnie przy drogach" width="840" height="1680" loading="lazy">
-        <figcaption>Włącz cykl dnia, a wieczorem zapalą się okna.</figcaption>
+        <img src="./shots/noc.png"
+             data-alt-pl="To samo miasto nocą: ciepłe światło w oknach i latarnie przy drogach"
+             data-alt-en="The same town at night: warm light in the windows and lanterns along the roads"
+             alt="The same town at night: warm light in the windows and lanterns along the roads"
+             width="840" height="1680" loading="lazy">
+        <figcaption>
+          <span data-lang="pl">Włącz cykl dnia, a wieczorem zapalą się okna.</span>
+          <span data-lang="en">Turn on the day cycle and the windows light up at dusk.</span>
+        </figcaption>
       </figure>
     </section>
 
     <section class="stats reveal">
-      <div class="stat"><span class="num" data-count="7">0</span><span class="lab">dóbr w łańcuchu</span></div>
-      <div class="stat"><span class="num" data-count="10">0</span><span class="lab">rodzajów budynków</span></div>
-      <div class="stat"><span class="num" data-count="0">0</span><span class="lab">skrzynek z losowaniem</span></div>
+      <div class="stat">
+        <span class="num" data-count="7">0</span>
+        <span class="lab">
+          <span data-lang="pl">dóbr w łańcuchu</span>
+          <span data-lang="en">goods in the chain</span>
+        </span>
+      </div>
+      <div class="stat">
+        <span class="num" data-count="10">0</span>
+        <span class="lab">
+          <span data-lang="pl">rodzajów budynków</span>
+          <span data-lang="en">building types</span>
+        </span>
+      </div>
+      <div class="stat">
+        <span class="num" data-count="0">0</span>
+        <span class="lab">
+          <span data-lang="pl">skrzynek z losowaniem</span>
+          <span data-lang="en">loot boxes, ever</span>
+        </span>
+      </div>
     </section>
 
     <section class="promise reveal">
-      <p>Wyspa pracuje także wtedy, gdy Cię nie ma — po powrocie odbierasz zarobek. Bez rejestracji, bez śledzenia, bez skrzynek z losowaniem. Gra jest po polsku.</p>
-      <a class="cta cta-primary" href="./play/">Zacznij od chaty drwala</a>
+      <p>
+        <span data-lang="pl">Wyspa pracuje także wtedy, gdy Cię nie ma — po powrocie odbierasz zarobek. Bez rejestracji, bez śledzenia, bez skrzynek z losowaniem.</span>
+        <span data-lang="en">The island keeps working while you are away — collect the earnings when you come back. No sign-up, no tracking, no loot boxes.</span>
+      </p>
+      <a class="cta cta-primary" href="./play/">
+        <span data-lang="pl">Zacznij od chaty drwala</span>
+        <span data-lang="en">Start with a woodcutter's hut</span>
+      </a>
     </section>
 
     <footer>
-      <span><b>PORTHOLM</b> · wyspiarski city-builder</span>
-      <span>Gra w wersji rozwojowej — zapisuje stan w Twojej przeglądarce.</span>
+      <span>
+        <b>PORTHOLM</b>
+        <span data-lang="pl"> · wyspiarski city-builder</span>
+        <span data-lang="en"> · an island city-builder</span>
+      </span>
+      <span>
+        <span data-lang="pl">Wersja rozwojowa — stan zapisuje się w Twojej przeglądarce. Gra po polsku i angielsku.</span>
+        <span data-lang="en">Early build — your progress is saved in this browser. Playable in English and Polish.</span>
+      </span>
     </footer>
   </main>
 </body>
